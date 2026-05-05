@@ -206,12 +206,12 @@ serve({
             "utf-8",
           );
           const { frontmatter } = parseFrontmatter(raw);
-          const title = frontmatter.title || "Learn Odin";
+          const title = frontmatter.title || "New Wave";
           const desc = frontmatter.description || "Odin programming resource.";
 
           // Inject OpenGraph tags
           const metaTags = `
-            <title>${title} — Learn Odin</title>
+            <title>${title} — New Wave</title>
             <meta name="description" content="${desc}" />
             <meta property="og:title" content="${title}" />
             <meta property="og:description" content="${desc}" />
@@ -235,4 +235,4 @@ serve({
   },
 });
 
-console.log("✦ Learn Odin running  →  http://localhost:3000");
+console.log("✦ New Wave running  →  http://localhost:3000");

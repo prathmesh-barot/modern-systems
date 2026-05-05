@@ -1,5 +1,5 @@
 /* ─────────────────────────────────────────────────────────────────────────────
-   Learn Odin  ·  content.js  —  Fetch & render markdown content
+   New Wave  ·  content.js  —  Fetch & render markdown content
    Depends on: marked (CDN), hljs (CDN), main.js
 ───────────────────────────────────────────────────────────────────────────── */
 

@@ -1,7 +1,7 @@
 {
-  "name": "learn-odin",
+  "name": "new-wave",
   "version": "1.0.0",
-  "description": "Learn Odin — A premium blogging, docs & tutorials website",
+  "description": "New Wave — A premium blogging, docs & tutorials website",
   "scripts": {
     "start": "bun run server.ts",
     "dev": "bun --watch server.ts"
