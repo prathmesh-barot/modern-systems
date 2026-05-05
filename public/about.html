@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About — Learn Odin</title>
+    <meta
+      name="description"
+      content="About Learn Odin — a free, open community resource for the Odin programming language."
+    />
+    <!-- Local Fonts -->
+    <link rel="stylesheet" href="/vendor/@fontsource/literata/index.css" />
+    <link rel="stylesheet" href="/vendor/@fontsource/space-grotesk/index.css" />
+    <link rel="stylesheet" href="/vendor/@fontsource/maple-mono/index.css" />
+    
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✦</text></svg>" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <script src="./js/main.js" defer></script>
+  </head>
+  <body>
+    <nav class="nav" role="navigation">
+      <div class="container nav__inner">
+        <a href="./" class="nav__logo">
+          <span class="nav__logo-mark">O</span>
+          Learn Odin
+        </a>
+        <ul class="nav__links">
+          <li><a href="./">Home</a></li>
+          <li><a href="./blog.html">Blog</a></li>
+          <li><a href="./docs.html">Docs</a></li>
+          <li><a href="./tutorials.html">Tutorials</a></li>
+          <li><a href="./about.html">About</a></li>
+        </ul>
+        <div class="nav__actions">
+          <button class="nav__theme" aria-label="Toggle theme"></button>
+          <button class="nav__burger" aria-label="Open menu">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </nav>
+    <div class="nav__mobile" role="dialog">
+      <a href="./">Home</a>
+      <a href="./blog.html">Blog</a>
+      <a href="./docs.html">Docs</a>
+      <a href="./tutorials.html">Tutorials</a>
+      <a href="./about.html">About</a>
+    </div>
+
+    <main class="page-offset">
+      <div
+        class="container container--narrow"
+        style="padding-top: 60px; padding-bottom: 100px"
+      >
+        <header
+          class="page-header fade-up"
+          style="border-bottom: none; margin-bottom: 0; padding-bottom: 32px"
+        >
+          <p class="page-header__label">The project</p>
+          <h1 class="page-header__title">About Learn Odin</h1>
+        </header>
+
+        <div class="prose fade-up" style="animation-delay: 100ms">
+          <p style="font-size: 1.1rem; line-height: 1.8; color: var(--text-2)">
+            Learn Odin is a free, community-driven knowledge base for the
+            <a href="https://odin-lang.org" target="_blank" rel="noopener"
+              >Odin programming language</a
+            >
+            — a simple, fast, and modern systems programming language created by
+            Bill Hall (GingerBill).
+          </p>
+
+          <h2>Why this site?</h2>
+          <p>
+            Odin is a language that deserves excellent learning resources. While
+            the official documentation is solid, beginners and intermediate
+            programmers often need approachable guides, worked examples, and
+            practical tutorials to really understand a language. That's what
+            Learn Odin aims to provide.
+          </p>
+
+          <h2>What's here</h2>
+          <p>
+            All content is free and will remain free. There are three main
+            content types:
+          </p>
+          <ul>
+            <li>
+              <strong>Blog</strong> — articles on language features, patterns,
+              performance, and ecosystem news.
+            </li>
+            <li>
+              <strong>Docs</strong> — reference documentation written to
+              complement the official spec.
+            </li>
+            <li>
+              <strong>Tutorials</strong> — hands-on guides from "Hello, World!"
+              to complex real programs.
+            </li>
+          </ul>
+
+          <h2>How it's built</h2>
+          <p>
+            This site is intentionally lightweight. Everything runs on Bun.js
+            serving static HTML, CSS, and vanilla JavaScript. Content is stored
+            as plain Markdown files. No database, no heavy framework, no
+            tracking. The whole site loads in under 100ms on a modern
+            connection.
+          </p>
+          <p>
+            Markdown is parsed client-side using
+            <a href="https://marked.js.org" target="_blank" rel="noopener"
+              >marked.js</a
+            >
+            and code blocks are highlighted using
+            <a href="https://highlightjs.org" target="_blank" rel="noopener"
+              >highlight.js</a
+            >.
+          </p>
+
+          <h2>Contributing</h2>
+          <p>
+            All content lives in the <code>content/</code> folder as Markdown
+            files with YAML frontmatter. To add or improve content, write a
+            <code>.md</code> file in the appropriate folder (<code>blog/</code>,
+            <code>docs/</code>, or <code>tutorials/</code>) and follow the
+            frontmatter format used by existing files.
+          </p>
+
+          <h2>Frontmatter reference</h2>
+          <p>
+            Each Markdown file can include the following frontmatter fields:
+          </p>
+
+          <pre><code class="language-yaml">---
+title: Your Post Title
+date: 2026-01-15
+description: A short one-sentence description.
+author: Your Name
+tags: odin, beginner, syntax
+readTime: 8 min read        # for blog posts
+difficulty: beginner        # for tutorials
+duration: 20 minutes        # for tutorials
+order: 1                    # for docs (controls sidebar order)
+---</code></pre>
+
+          <h2>License</h2>
+          <p>
+            All content is published under the
+            <a
+              href="https://creativecommons.org/licenses/by/4.0/"
+              target="_blank"
+              rel="noopener"
+              >CC BY 4.0</a
+            >
+            license. Code examples are in the public domain (CC0).
+          </p>
+        </div>
+
+        <!-- Tech stack badges -->
+        <div class="divider-label" style="margin-top: 60px">Built with</div>
+        <div class="flex gap-3 flex-wrap stagger">
+          <span class="tag" style="font-size: 0.78rem; padding: 6px 14px"
+            >Bun.js</span
+          >
+          <span class="tag" style="font-size: 0.78rem; padding: 6px 14px"
+            >Vanilla JS</span
+          >
+          <span class="tag" style="font-size: 0.78rem; padding: 6px 14px"
+            >marked.js</span
+          >
+          <span class="tag" style="font-size: 0.78rem; padding: 6px 14px"
+            >highlight.js</span
+          >
+          <span class="tag" style="font-size: 0.78rem; padding: 6px 14px"
+            >Literata</span
+          >
+          <span class="tag" style="font-size: 0.78rem; padding: 6px 14px"
+            >Space Grotesk</span
+          >
+          <span class="tag" style="font-size: 0.78rem; padding: 6px 14px"
+            >Maple Mono</span
+          >
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer__inner">
+        <p class="footer__copy">© 2026 Learn Odin. Free & open for everyone.</p>
+        <ul class="footer__links">
+          <li><a href="./blog.html">Blog</a></li>
+          <li><a href="./docs.html">Docs</a></li>
+          <li><a href="./tutorials.html">Tutorials</a></li>
+        </ul>
+      </div>
+    </footer>
+  </body>
+</html>

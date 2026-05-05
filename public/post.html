@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- SEO_PLACEHOLDER -->
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✦</text></svg>"
+    />
+    <!-- Local Fonts -->
+    <link rel="stylesheet" href="/vendor/@fontsource/literata/index.css" />
+    <link rel="stylesheet" href="/vendor/@fontsource/space-grotesk/index.css" />
+    <link rel="stylesheet" href="/vendor/@fontsource/maple-mono/index.css" />
+
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✦</text></svg>"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+    <script src="./js/main.js" defer></script>
+
+    <!-- Local Marked.js -->
+    <script src="/vendor/marked/lib/marked.umd.js" defer></script>
+
+    <!-- 1. Core Highlight.js (Auto-supports the Top 40 languages like C, C++, Rust, Go, Python) -->
+    <link
+      rel="stylesheet"
+      href="/vendor/@highlightjs/cdn-assets/styles/tokyo-night-dark.min.css"
+    />
+    <script
+      src="/vendor/@highlightjs/cdn-assets/highlight.min.js"
+      defer
+    ></script>
+
+    <!-- 2. The Official "Rich" Odin Language Definition -->
+    <script src="/vendor/highlightjs-odinlang/dist/odin.min.js" defer></script>
+
+    <!-- 3. Add any other niche languages here (like Zig) -->
+    <script
+      src="/vendor/@highlightjs/cdn-assets/languages/zig.min.js"
+      defer
+    ></script>
+  </head>
+  <body>
+    <nav class="nav" role="navigation">
+      <div class="container nav__inner">
+        <a href="./" class="nav__logo">
+          <span class="nav__logo-mark">O</span>
+          Learn Odin
+        </a>
+        <ul class="nav__links">
+          <li><a href="./">Home</a></li>
+          <li><a href="./blog.html">Blog</a></li>
+          <li><a href="./docs.html">Docs</a></li>
+          <li><a href="./tutorials.html">Tutorials</a></li>
+          <li><a href="./about.html">About</a></li>
+        </ul>
+        <div class="nav__actions">
+          <button class="nav__theme" aria-label="Toggle theme"></button>
+          <button class="nav__burger" aria-label="Open menu">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </nav>
+    <div class="nav__mobile" role="dialog">
+      <a href="./">Home</a>
+      <a href="./blog.html">Blog</a>
+      <a href="./docs.html">Docs</a>
+      <a href="./tutorials.html">Tutorials</a>
+      <a href="./about.html">About</a>
+    </div>
+
+    <main class="page-offset">
+      <div class="container">
+        <!-- Loading skeleton -->
+        <div id="post-skeleton" class="post-layout" style="padding-top: 48px">
+          <div>
+            <div
+              class="skeleton skeleton-text"
+              style="height: 0.85em; width: 80px; margin-bottom: 24px"
+            ></div>
+            <div
+              class="skeleton skeleton-text"
+              style="height: 0.6em; width: 100px; margin-bottom: 18px"
+            ></div>
+            <div
+              class="skeleton skeleton-text"
+              style="height: 2.2em; width: 80%; margin-bottom: 12px"
+            ></div>
+            <div
+              class="skeleton skeleton-text"
+              style="height: 2.2em; width: 55%; margin-bottom: 20px"
+            ></div>
+            <div
+              class="skeleton skeleton-text skeleton-text--full"
+              style="height: 0.9em; margin-bottom: 6px"
+            ></div>
+            <div
+              class="skeleton skeleton-text"
+              style="height: 0.9em; width: 90%"
+            ></div>
+          </div>
+          <div></div>
+        </div>
+
+        <!-- Actual post -->
+        <div class="post-layout hidden" id="post-wrap">
+          <!-- Main column -->
+          <div>
+            <div class="post-header" id="post-header"></div>
+            <article class="prose" id="post-body"></article>
+
+            <!-- Post nav (prev/next) -->
+            <nav
+              id="post-nav"
+              class="hidden"
+              style="
+                margin-top: 60px;
+                padding-top: 32px;
+                border-top: 1px solid var(--border);
+                display: flex;
+                gap: 16px;
+                justify-content: space-between;
+              "
+            >
+              <a id="post-prev" class="btn btn--ghost" href="#"></a>
+              <a id="post-next" class="btn btn--ghost" href="#"></a>
+            </nav>
+          </div>
+
+          <!-- TOC sidebar -->
+          <aside
+            class="toc"
+            id="toc"
+            role="complementary"
+            aria-label="Table of contents"
+          ></aside>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer__inner">
+        <p class="footer__copy">© 2026 Learn Odin.</p>
+        <ul class="footer__links">
+          <li><a href="./blog.html">Blog</a></li>
+          <li><a href="./docs.html">Docs</a></li>
+          <li><a href="./tutorials.html">Tutorials</a></li>
+        </ul>
+      </div>
+    </footer>
+
+    <script src="./js/content.js" defer></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", async () => {
+        const params = new URLSearchParams(location.search);
+        const type = params.get("type") || "blog";
+        const slug = params.get("slug");
+
+        const skeleton = document.getElementById("post-skeleton");
+        const wrap = document.getElementById("post-wrap");
+        const header = document.getElementById("post-header");
+        const body = document.getElementById("post-body");
+        const toc = document.getElementById("toc");
+        const postNav = document.getElementById("post-nav");
+        const backHref =
+          type === "tutorials" ? "./tutorials.html" : "./blog.html";
+        const backLabel = type === "tutorials" ? "← Tutorials" : "← Blog";
+
+        if (!slug) {
+          skeleton.innerHTML = `<p class="text-dim font-ui text-sm">No post specified.</p>`;
+          return;
+        }
+
+        try {
+          const [{ frontmatter, body: md }, allPosts] = await Promise.all([
+            window.LOContent.fetchPost(type, slug),
+            window.LOContent.fetchList(type),
+          ]);
+
+          // Update document title
+          document.title = `${frontmatter.title || slug} — Learn Odin`;
+
+          // Render markdown
+          const html = window.LOContent.renderMarkdown(md);
+
+          // Header
+          const tags = frontmatter.tags
+            ? frontmatter.tags
+                .split(",")
+                .map((t) => `<span class="tag">${t.trim()}</span>`)
+                .join("")
+            : "";
+          header.innerHTML = `
+          <a href="${backHref}" class="post-header__back">${window.LO.iconBack()} ${backLabel}</a>
+          <div class="post-header__meta">
+            ${tags}
+            ${frontmatter.difficulty ? `<span class="tag">${frontmatter.difficulty}</span>` : ""}
+            ${frontmatter.date ? `<span class="post-card__date">${window.LO.formatDate(frontmatter.date)}</span>` : ""}
+          </div>
+          <h1 class="post-header__title">${frontmatter.title || slug}</h1>
+          ${frontmatter.description ? `<p class="post-header__desc">${frontmatter.description}</p>` : ""}
+          <div class="post-header__byline">
+            <span>By ${frontmatter.author || "Odin Team"}</span>
+            ${frontmatter.readTime ? `<span>·</span><span>${frontmatter.readTime}</span>` : ""}
+            ${frontmatter.duration ? `<span>·</span><span>${frontmatter.duration}</span>` : ""}
+          </div>
+        `;
+
+          body.innerHTML = html;
+          window.LOContent.injectHeadingIds(body);
+
+          // TOC
+          const headings = window.LOContent.extractHeadings(html);
+          window.LOContent.buildTOC(headings, toc);
+
+          // Syntax highlighting
+          if (typeof hljs !== "undefined") {
+            body
+              .querySelectorAll("pre code")
+              .forEach((b) => hljs.highlightElement(b));
+          }
+          window.LO.initCodeCopy();
+
+          // Prev / next
+          const idx = allPosts.findIndex((p) => p.slug === slug);
+          const prev = allPosts[idx - 1];
+          const next = allPosts[idx + 1];
+          if (prev || next) {
+            postNav.classList.remove("hidden");
+            postNav.style.display = "flex";
+            const prevEl = document.getElementById("post-prev");
+            const nextEl = document.getElementById("post-next");
+            if (prev) {
+              prevEl.href = `./post.html?type=${type}&slug=${prev.slug}`;
+              prevEl.innerHTML = `${window.LO.iconBack()} ${prev.title}`;
+            } else {
+              prevEl.style.display = "none";
+            }
+            if (next) {
+              nextEl.href = `./post.html?type=${type}&slug=${next.slug}`;
+              nextEl.innerHTML = `${next.title} →`;
+              nextEl.style.marginLeft = "auto";
+            } else {
+              nextEl.style.display = "none";
+            }
+          }
+
+          // Show
+          skeleton.classList.add("hidden");
+          wrap.classList.remove("hidden");
+          wrap.classList.add("fade-up");
+        } catch (e) {
+          skeleton.innerHTML = `
+          <div class="empty" style="grid-column:1/-1">
+            <div class="empty__icon">⚠</div>
+            <p class="empty__text font-ui">Could not load post <code style="font-family:var(--font-code);font-size:.85em">${slug}</code>.</p>
+          </div>
+        `;
+        }
+      });
+    </script>
+  </body>
+</html>

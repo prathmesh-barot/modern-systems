@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Docs — Learn Odin</title>
+    <meta
+      name="description"
+      content="Reference documentation for the Odin programming language."
+    />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✦</text></svg>"
+    />
+    <!-- Local Fonts -->
+    <link rel="stylesheet" href="/vendor/@fontsource/literata/index.css" />
+    <link rel="stylesheet" href="/vendor/@fontsource/space-grotesk/index.css" />
+    <link rel="stylesheet" href="/vendor/@fontsource/maple-mono/index.css" />
+
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✦</text></svg>"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+    <script src="./js/main.js" defer></script>
+
+    <!-- Local Marked.js -->
+    <script src="/vendor/marked/lib/marked.umd.js" defer></script>
+
+    <!-- 1. Core Highlight.js (Auto-supports the Top 40 languages like C, C++, Rust, Go, Python) -->
+    <link
+      rel="stylesheet"
+      href="/vendor/@highlightjs/cdn-assets/styles/tokyo-night-dark.min.css"
+    />
+    <script
+      src="/vendor/@highlightjs/cdn-assets/highlight.min.js"
+      defer
+    ></script>
+
+    <!-- 2. The Official "Rich" Odin Language Definition -->
+    <script src="/vendor/highlightjs-odinlang/dist/odin.min.js" defer></script>
+
+    <!-- 3. Add any other niche languages here (like Zig) -->
+    <script
+      src="/vendor/@highlightjs/cdn-assets/languages/zig.min.js"
+      defer
+    ></script>
+  </head>
+  <body>
+    <!-- ── Nav ──────────────────────────────────────────────────────────────── -->
+    <nav class="nav" role="navigation">
+      <div class="container nav__inner">
+        <a href="./" class="nav__logo">
+          <span class="nav__logo-mark">O</span>
+          Learn Odin
+        </a>
+        <ul class="nav__links">
+          <li><a href="./">Home</a></li>
+          <li><a href="./blog.html">Blog</a></li>
+          <li><a href="./docs.html">Docs</a></li>
+          <li><a href="./tutorials.html">Tutorials</a></li>
+          <li><a href="./about.html">About</a></li>
+        </ul>
+        <div class="nav__actions">
+          <button class="nav__theme" aria-label="Toggle theme"></button>
+          <button class="nav__burger" aria-label="Open menu">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </nav>
+    <div class="nav__mobile" role="dialog">
+      <a href="./">Home</a>
+      <a href="./blog.html">Blog</a>
+      <a href="./docs.html">Docs</a>
+      <a href="./tutorials.html">Tutorials</a>
+      <a href="./about.html">About</a>
+    </div>
+
+    <div class="page-offset">
+      <div
+        class="docs-layout container--wide"
+        style="max-width: 1200px; margin: 0 auto"
+      >
+        <!-- ── Sidebar ──────────────────────────────────────────────────── -->
+        <aside
+          class="docs-sidebar"
+          id="docs-sidebar"
+          aria-label="Documentation navigation"
+        >
+          <div style="padding: 0 20px 16px">
+            <div class="search-bar" style="max-width: 100%">
+              <span class="search-bar__icon" aria-hidden="true">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  width="14"
+                  height="14"
+                >
+                  <circle cx="11" cy="11" r="8" />
+                  <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                </svg>
+              </span>
+              <input
+                class="input"
+                id="doc-search"
+                type="search"
+                placeholder="Search docs…"
+                style="font-size: 0.8rem; padding: 8px 8px 8px 34px"
+              />
+            </div>
+          </div>
+          <nav id="sidebar-nav" aria-label="Docs sections">
+            <!-- Built by JS -->
+            <div style="padding: 0 20px">
+              <div
+                class="skeleton skeleton-text"
+                style="height: 0.65em; width: 50%; margin-bottom: 10px"
+              ></div>
+              <div
+                class="skeleton skeleton-text skeleton-text--full"
+                style="height: 0.85em; margin-bottom: 6px"
+              ></div>
+              <div
+                class="skeleton skeleton-text"
+                style="height: 0.85em; width: 80%; margin-bottom: 6px"
+              ></div>
+              <div
+                class="skeleton skeleton-text"
+                style="height: 0.85em; width: 65%; margin-bottom: 18px"
+              ></div>
+              <div
+                class="skeleton skeleton-text"
+                style="height: 0.65em; width: 45%; margin-bottom: 10px"
+              ></div>
+              <div
+                class="skeleton skeleton-text skeleton-text--full"
+                style="height: 0.85em; margin-bottom: 6px"
+              ></div>
+              <div
+                class="skeleton skeleton-text"
+                style="height: 0.85em; width: 75%; margin-bottom: 6px"
+              ></div>
+            </div>
+          </nav>
+        </aside>
+
+        <!-- ── Main content ─────────────────────────────────────────────── -->
+        <div class="docs-content" id="docs-main">
+          <!-- Welcome / loading state -->
+          <div id="docs-welcome">
+            <div id="docs-skeleton">
+              <div
+                class="skeleton skeleton-text"
+                style="height: 2em; width: 55%; margin-bottom: 20px"
+              ></div>
+              <div class="skeleton skeleton-text skeleton-text--full"></div>
+              <div
+                class="skeleton skeleton-text skeleton-text--full"
+                style="margin-top: 6px"
+              ></div>
+              <div
+                class="skeleton skeleton-text"
+                style="width: 80%; margin-top: 6px"
+              ></div>
+            </div>
+          </div>
+
+          <!-- Post content injected here -->
+          <article class="prose hidden" id="doc-content">
+            <div class="post-header" id="doc-header"></div>
+            <div id="doc-body"></div>
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="container footer__inner">
+        <p class="footer__copy">© 2026 Learn Odin.</p>
+        <ul class="footer__links">
+          <li><a href="./blog.html">Blog</a></li>
+          <li><a href="./tutorials.html">Tutorials</a></li>
+        </ul>
+      </div>
+    </footer>
+
+    <script src="./js/content.js" defer></script>
+    <script>
+      let allDocs = [];
+
+      async function loadDocPage(slug) {
+        const content = document.getElementById("doc-content");
+        const welcome = document.getElementById("docs-welcome");
+        const skeleton = document.getElementById("docs-skeleton");
+        const header = document.getElementById("doc-header");
+        const body = document.getElementById("doc-body");
+
+        // Show skeleton
+        content.classList.add("hidden");
+        welcome.classList.remove("hidden");
+        skeleton.innerHTML = `
+        <div class="skeleton skeleton-text" style="height:2em;width:55%;margin-bottom:20px"></div>
+        <div class="skeleton skeleton-text skeleton-text--full"></div>
+        <div class="skeleton skeleton-text skeleton-text--full" style="margin-top:6px"></div>
+        <div class="skeleton skeleton-text" style="width:80%;margin-top:6px"></div>
+      `;
+
+        // Update active link
+        document.querySelectorAll(".docs-sidebar__link").forEach((a) => {
+          a.classList.toggle("active", a.dataset.slug === slug);
+        });
+
+        // Update URL hash
+        const url = new URL(location.href);
+        url.searchParams.set("doc", slug);
+        history.pushState({}, "", url);
+
+        try {
+          const { frontmatter, body: md } = await window.LOContent.fetchPost(
+            "docs",
+            slug,
+          );
+          const html = window.LOContent.renderMarkdown(md);
+
+          header.innerHTML = `
+          <p class="post-header__back" onclick="history.back()" style="cursor:pointer">
+            ${window.LO.iconBack()} Docs
+          </p>
+          ${frontmatter.title ? `<h1 style="font-size:clamp(1.6rem,4vw,2.4rem);letter-spacing:-0.03em;margin-bottom:8px">${frontmatter.title}</h1>` : ""}
+          ${frontmatter.description ? `<p class="text-muted" style="font-size:.95rem;line-height:1.7;margin-bottom:0">${frontmatter.description}</p>` : ""}
+        `;
+          body.innerHTML = html;
+
+          welcome.classList.add("hidden");
+          content.classList.remove("hidden");
+          content.classList.add("fade-up");
+          setTimeout(() => content.classList.remove("fade-up"), 600);
+
+          window.LOContent.injectHeadingIds(body);
+          window.scrollTo({ top: 0, behavior: "smooth" });
+
+          if (typeof hljs !== "undefined") {
+            document.querySelectorAll("#doc-body pre code").forEach((b) => {
+              hljs.highlightElement(b);
+            });
+          }
+          window.LO.initCodeCopy();
+        } catch (e) {
+          body.innerHTML = `<p class="text-dim font-ui text-sm">Could not load document: ${slug}</p>`;
+          welcome.classList.add("hidden");
+          content.classList.remove("hidden");
+        }
+      }
+
+      function buildSidebar(nav, docs) {
+        const container = document.getElementById("sidebar-nav");
+        if (!nav || nav.length === 0) {
+          // Flat list fallback
+          container.innerHTML = `<div class="docs-sidebar__group">
+          <p class="docs-sidebar__group-title">Documentation</p>
+          ${docs.map((d) => `<a href="#" class="docs-sidebar__link" data-slug="${d.slug}">${d.title}</a>`).join("")}
+        </div>`;
+        } else {
+          container.innerHTML = nav
+            .map(
+              (group) => `
+          <div class="docs-sidebar__group">
+            <p class="docs-sidebar__group-title">${group.title}</p>
+            ${group.items
+              .map(
+                (item) => `
+              <a href="#" class="docs-sidebar__link" data-slug="${item.slug}">${item.title}</a>
+            `,
+              )
+              .join("")}
+          </div>
+        `,
+            )
+            .join("");
+        }
+
+        container.querySelectorAll(".docs-sidebar__link").forEach((a) => {
+          a.addEventListener("click", (e) => {
+            e.preventDefault();
+            loadDocPage(a.dataset.slug);
+          });
+        });
+      }
+
+      function filterSidebar(query) {
+        const q = query.toLowerCase();
+        document.querySelectorAll(".docs-sidebar__link").forEach((a) => {
+          const match = a.textContent.toLowerCase().includes(q);
+          a.style.display = match ? "" : "none";
+        });
+        document.querySelectorAll(".docs-sidebar__group").forEach((g) => {
+          const visible = Array.from(
+            g.querySelectorAll(".docs-sidebar__link"),
+          ).some((a) => a.style.display !== "none");
+          g.style.display = visible ? "" : "none";
+        });
+      }
+
+      document.addEventListener("DOMContentLoaded", async () => {
+        try {
+          const [navData, docs] = await Promise.all([
+            window.LOContent.fetchDocsNav(),
+            window.LOContent.fetchList("docs"),
+          ]);
+          allDocs = docs;
+          buildSidebar(navData, docs);
+
+          // Load from URL param or first doc
+          const params = new URLSearchParams(location.search);
+          const slug = params.get("doc") || (docs[0] && docs[0].slug);
+          if (slug) loadDocPage(slug);
+        } catch {
+          document.getElementById("docs-skeleton").innerHTML =
+            `<p class="text-dim font-ui text-sm">Could not load docs. Is the server running?</p>`;
+        }
+
+        // Sidebar search
+        document.getElementById("doc-search").addEventListener(
+          "input",
+          window.LO.debounce((e) => {
+            filterSidebar(e.target.value);
+          }, 150),
+        );
+      });
+    </script>
+  </body>
+</html>

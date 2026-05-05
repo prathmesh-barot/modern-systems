@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>404 Not Found — Learn Odin</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✦</text></svg>"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+    <script src="./js/main.js" defer></script>
+  </head>
+  <body>
+    <nav class="nav" role="navigation">
+      <div class="container nav__inner">
+        <a href="./" class="nav__logo"
+          ><span class="nav__logo-mark">O</span>Learn Odin</a
+        >
+        <ul class="nav__links">
+          <li><a href="./">Home</a></li>
+          <li><a href="./blog.html">Blog</a></li>
+          <li><a href="./docs.html">Docs</a></li>
+          <li><a href="./tutorials.html">Tutorials</a></li>
+        </ul>
+        <div class="nav__actions">
+          <button class="nav__theme" aria-label="Toggle theme"></button>
+        </div>
+      </div>
+    </nav>
+
+    <main
+      class="page-offset"
+      style="min-height: 80vh; display: flex; align-items: center"
+    >
+      <div class="container" style="text-align: center">
+        <h1
+          style="
+            font-size: clamp(4rem, 10vw, 8rem);
+            font-family: var(--font-code);
+            color: var(--border-2);
+            line-height: 1;
+            margin-bottom: 20px;
+          "
+        >
+          404
+        </h1>
+        <h2 style="margin-bottom: 16px">Page not found</h2>
+        <p
+          class="text-muted"
+          style="margin-bottom: 32px; max-width: 400px; margin-inline: auto"
+        >
+          The page you're looking for doesn't exist or has been moved.
+        </p>
+        <a href="./" class="btn btn--primary">Return Home</a>
+      </div>
+    </main>
+  </body>
+</html>

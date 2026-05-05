@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tutorials — Learn Odin</title>
+    <meta
+      name="description"
+      content="Step-by-step tutorials for learning Odin programming from scratch."
+    />
+    <link rel="stylesheet" href="/vendor/@fontsource/literata/index.css" />
+    <link rel="stylesheet" href="/vendor/@fontsource/space-grotesk/index.css" />
+    <link rel="stylesheet" href="/vendor/@fontsource/maple-mono/index.css" />
+    
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✦</text></svg>" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <script src="./js/main.js" defer></script>
+  </head>
+  <body>
+    <nav class="nav" role="navigation">
+      <div class="container nav__inner">
+        <a href="./" class="nav__logo">
+          <span class="nav__logo-mark">O</span>
+          Learn Odin
+        </a>
+        <ul class="nav__links">
+          <li><a href="./">Home</a></li>
+          <li><a href="./blog.html">Blog</a></li>
+          <li><a href="./docs.html">Docs</a></li>
+          <li><a href="./tutorials.html">Tutorials</a></li>
+          <li><a href="./about.html">About</a></li>
+        </ul>
+        <div class="nav__actions">
+          <button class="nav__theme" aria-label="Toggle theme"></button>
+          <button class="nav__burger" aria-label="Open menu">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </nav>
+    <div class="nav__mobile" role="dialog">
+      <a href="./">Home</a>
+      <a href="./blog.html">Blog</a>
+      <a href="./docs.html">Docs</a>
+      <a href="./tutorials.html">Tutorials</a>
+      <a href="./about.html">About</a>
+    </div>
+
+    <main class="page-offset">
+      <div class="container">
+        <header class="page-header fade-up">
+          <p class="page-header__label">Guided Learning</p>
+          <h1 class="page-header__title">Tutorials</h1>
+          <p class="page-header__desc">
+            Structured, beginner-friendly tutorials. Follow in order or jump to
+            any topic. Each tutorial builds on the last.
+          </p>
+        </header>
+
+        <!-- Difficulty filter -->
+        <div
+          class="flex gap-2 mb-6 fade-up"
+          style="animation-delay: 80ms; flex-wrap: wrap"
+          id="diff-filters"
+        >
+          <button class="tag active-filter" data-diff="all">All Levels</button>
+          <button class="tag" data-diff="beginner">Beginner</button>
+          <button class="tag" data-diff="intermediate">Intermediate</button>
+          <button class="tag" data-diff="advanced">Advanced</button>
+        </div>
+
+        <div
+          class="flex flex-col gap-3 stagger"
+          id="tutorials-list"
+          style="max-width: 800px"
+        >
+          <!-- Loaded by JS -->
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer__inner">
+        <p class="footer__copy">© 2026 Learn Odin.</p>
+        <ul class="footer__links">
+          <li><a href="./">Home</a></li>
+          <li><a href="./blog.html">Blog</a></li>
+          <li><a href="./docs.html">Docs</a></li>
+        </ul>
+      </div>
+    </footer>
+
+    <script src="./js/content.js" defer></script>
+    <script>
+      let allTuts = [];
+      let activeDiff = "all";
+
+      const DIFF_COLOR = {
+        beginner: "#6a8",
+        intermediate: "#87a",
+        advanced: "#a87",
+      };
+
+      function renderTuts(list) {
+        const el = document.getElementById("tutorials-list");
+        if (list.length === 0) {
+          el.innerHTML = `<div class="empty"><div class="empty__icon">📖</div><p class="empty__text">No tutorials at this level yet.</p></div>`;
+          return;
+        }
+        el.innerHTML = list
+          .map(
+            (t, i) => `
+        <a href="./post.html?type=tutorials&slug=${t.slug}" class="tutorial-card">
+          <div class="tutorial-card__num">${String(i + 1).padStart(2, "0")}</div>
+          <div class="tutorial-card__body">
+            <h2 class="tutorial-card__title">${t.title}</h2>
+            <p class="tutorial-card__desc">${t.description}</p>
+            <div class="tutorial-card__foot">
+              ${t.difficulty ? `<span class="tag">${t.difficulty}</span>` : ""}
+              ${t.duration ? `<span class="post-card__read">${t.duration}</span>` : ""}
+            </div>
+          </div>
+          <span style="color:var(--text-3);align-self:center;flex-shrink:0">${window.LO.iconArrow()}</span>
+        </a>
+      `,
+          )
+          .join("");
+      }
+
+      document.addEventListener("DOMContentLoaded", async () => {
+        const el = document.getElementById("tutorials-list");
+        // Skeleton
+        el.innerHTML = Array.from(
+          { length: 4 },
+          () => `
+        <div class="tutorial-card" style="pointer-events:none">
+          <div class="skeleton" style="width:36px;height:36px;border-radius:6px;flex-shrink:0"></div>
+          <div style="flex:1;display:flex;flex-direction:column;gap:8px">
+            <div class="skeleton skeleton-text" style="height:1em;width:60%"></div>
+            <div class="skeleton skeleton-text skeleton-text--full" style="height:0.85em"></div>
+            <div class="skeleton skeleton-text" style="height:0.85em;width:40%"></div>
+          </div>
+        </div>
+      `,
+        ).join("");
+
+        try {
+          allTuts = await window.LOContent.fetchList("tutorials");
+          renderTuts(allTuts);
+        } catch {
+          el.innerHTML = `<p class="text-dim font-ui text-sm">Could not load tutorials.</p>`;
+        }
+
+        // Filters
+        document.querySelectorAll("#diff-filters .tag").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            document
+              .querySelectorAll("#diff-filters .tag")
+              .forEach((b) => b.classList.remove("active-filter"));
+            btn.classList.add("active-filter");
+            activeDiff = btn.dataset.diff;
+            const filtered =
+              activeDiff === "all"
+                ? allTuts
+                : allTuts.filter(
+                    (t) =>
+                      t.difficulty && t.difficulty.toLowerCase() === activeDiff,
+                  );
+            renderTuts(filtered);
+          });
+        });
+      });
+    </script>
+    <style>
+      .active-filter {
+        background: var(--text);
+        color: var(--bg);
+        border-color: var(--text);
+      }
+      .active-filter:hover {
+        opacity: 0.85;
+      }
+    </style>
+  </body>
+</html>

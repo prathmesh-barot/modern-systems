@@ -1,0 +1,16 @@
+[
+  {
+    "title": "Getting Started",
+    "items": [
+      { "title": "Introduction", "slug": "introduction" },
+      { "title": "Installation", "slug": "installation" }
+    ]
+  },
+  {
+    "title": "Language Basics",
+    "items": [
+      { "title": "Variables & Types", "slug": "variables-and-types" },
+      { "title": "Control Flow", "slug": "control-flow" }
+    ]
+  }
+]

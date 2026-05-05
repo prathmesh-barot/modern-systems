@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Learn Odin — Programming Language Resources</title>
+    <meta
+      name="description"
+      content="Free blogs, documentation, and tutorials for the Odin programming language. Learn Odin from scratch with premium quality guides."
+    />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✦</text></svg>"
+    />
+    <!-- Local Fonts -->
+    <link rel="stylesheet" href="/vendor/@fontsource/literata/index.css" />
+    <link rel="stylesheet" href="/vendor/@fontsource/space-grotesk/index.css" />
+    <link rel="stylesheet" href="/vendor/@fontsource/maple-mono/index.css" />
+
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✦</text></svg>" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <script src="./js/main.js" defer></script>
+
+    <!-- Local Highlight.js -->
+    <link rel="stylesheet" href="/vendor/@highlightjs/cdn-assets/styles/tokyo-night-dark.min.css" />
+    <script src="/vendor/@highlightjs/cdn-assets/highlight.min.js" defer></script>
+  </head>
+  <body>
+    <!-- ── Navigation ────────────────────────────────────────────────────── -->
+    <nav class="nav" role="navigation" aria-label="Main navigation">
+      <div class="container nav__inner">
+        <a href="./" class="nav__logo">
+          <span class="nav__logo-mark">O</span>
+          Learn Odin
+        </a>
+        <ul class="nav__links">
+          <li><a href="./">Home</a></li>
+          <li><a href="./blog.html">Blog</a></li>
+          <li><a href="./docs.html">Docs</a></li>
+          <li><a href="./tutorials.html">Tutorials</a></li>
+          <li><a href="./about.html">About</a></li>
+        </ul>
+        <div class="nav__actions">
+          <button class="nav__theme" aria-label="Toggle theme"></button>
+          <button class="nav__burger" aria-label="Open menu">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Mobile menu -->
+    <div class="nav__mobile" role="dialog" aria-label="Mobile navigation">
+      <a href="./">Home</a>
+      <a href="./blog.html">Blog</a>
+      <a href="./docs.html">Docs</a>
+      <a href="./tutorials.html">Tutorials</a>
+      <a href="./about.html">About</a>
+    </div>
+
+    <main>
+      <!-- ── Hero ────────────────────────────────────────────────────────── -->
+      <section class="hero page-offset">
+        <div class="container">
+          <p class="hero__eyebrow fade-up">Open source · Free forever</p>
+          <h1 class="hero__title fade-up" style="animation-delay: 80ms">
+            Master<br /><em>Odin</em> Programming
+          </h1>
+          <p class="hero__desc fade-up" style="animation-delay: 160ms">
+            Beautifully written blogs, structured documentation, and
+            step-by-step tutorials for Odin — the simple, fast systems
+            programming language.
+          </p>
+          <div class="hero__actions fade-up" style="animation-delay: 240ms">
+            <a href="./tutorials.html" class="btn btn--primary btn--lg"
+              >Start Learning →</a
+            >
+            <a href="./docs.html" class="btn btn--ghost btn--lg"
+              >Read the Docs</a
+            >
+          </div>
+          <div class="hero__scroll fade-up" style="animation-delay: 400ms">
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <line x1="12" y1="5" x2="12" y2="19" />
+              <polyline points="19 12 12 19 5 12" />
+            </svg>
+            Scroll to explore
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Stats ────────────────────────────────────────────────────────── -->
+      <section>
+        <div class="container">
+          <div class="stats stagger" id="stats">
+            <div>
+              <div class="stat__num" id="stat-posts">12+</div>
+              <div class="stat__label">Blog Posts</div>
+            </div>
+            <div>
+              <div class="stat__num" id="stat-docs">20+</div>
+              <div class="stat__label">Doc Pages</div>
+            </div>
+            <div>
+              <div class="stat__num" id="stat-tuts">8+</div>
+              <div class="stat__label">Tutorials</div>
+            </div>
+            <div>
+              <div class="stat__num">100%</div>
+              <div class="stat__label">Free</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Features ─────────────────────────────────────────────────────── -->
+      <section class="section">
+        <div class="container">
+          <div class="section__header">
+            <div>
+              <p class="section__subtitle">What's inside</p>
+              <h2 class="section__title">Everything you need to learn Odin</h2>
+            </div>
+          </div>
+          <div class="grid-3 stagger">
+          <div class="feature-card">
+    <div class="feature-card__icon">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"></path><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"></path></svg>
+    </div>
+    <h3 class="feature-card__title">In-Depth Blog</h3>
+    <p class="feature-card__desc">Thoughtfully written articles covering language features, best practices, performance tips, and real-world patterns in Odin.</p>
+  </div>
+  <div class="feature-card">
+    <div class="feature-card__icon">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"></path></svg>
+    </div>
+    <h3 class="feature-card__title">Reference Docs</h3>
+    <p class="feature-card__desc">Structured, searchable documentation with clear examples for every built-in, type, and standard library package.</p>
+  </div>
+  <div class="feature-card">
+    <div class="feature-card__icon">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+    </div>
+    <h3 class="feature-card__title">Step-by-Step Tutorials</h3>
+    <p class="feature-card__desc">Guided projects from Hello World to building real programs — each with annotated code and explanations at every step.</p>
+  </div>
+  <div class="feature-card">
+    <div class="feature-card__icon">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+    </div>
+    <h3 class="feature-card__title">Blazing Fast</h3>
+    <p class="feature-card__desc">Zero bloat. No tracking. Pure HTML, CSS, and vanilla JS. This site loads in under 100ms and works on every device.</p>
+  </div>
+  <div class="feature-card">
+    <div class="feature-card__icon">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><path d="M3 9h18"></path><path d="M9 21V9"></path></svg>
+    </div>
+    <h3 class="feature-card__title">Markdown-Powered</h3>
+    <p class="feature-card__desc">All content is written in plain Markdown files. Easy to read, easy to contribute, and version-controlled on GitHub.</p>
+  </div>
+  <div class="feature-card">
+    <div class="feature-card__icon">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+    </div>
+    <h3 class="feature-card__title">Always Free</h3>
+    <p class="feature-card__desc">No paywalls, no subscriptions, no ads. Learn Odin is a community resource built for everyone, forever.</p>
+  </div>
+</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Recent posts ──────────────────────────────────────────────────── -->
+      <section class="section" style="padding-top: 0">
+        <div class="container">
+          <div class="divider-label">Recent from the blog</div>
+          <div class="section__header">
+            <h2 class="section__title">Latest Articles</h2>
+            <a href="./blog.html" class="btn btn--ghost btn--sm">View all →</a>
+          </div>
+          <div class="grid-3 stagger" id="recent-posts">
+            <!-- Loaded by JS -->
+            <div class="post-card skeleton-card">
+              <div
+                class="skeleton skeleton-text skeleton-text--short"
+                style="height: 0.7em"
+              ></div>
+              <div
+                class="skeleton skeleton-text"
+                style="height: 1em; width: 80%"
+              ></div>
+              <div
+                class="skeleton skeleton-text skeleton-text--full"
+                style="height: 0.85em"
+              ></div>
+            </div>
+            <div class="post-card skeleton-card">
+              <div
+                class="skeleton skeleton-text skeleton-text--short"
+                style="height: 0.7em"
+              ></div>
+              <div
+                class="skeleton skeleton-text"
+                style="height: 1em; width: 70%"
+              ></div>
+              <div
+                class="skeleton skeleton-text skeleton-text--full"
+                style="height: 0.85em"
+              ></div>
+            </div>
+            <div class="post-card skeleton-card">
+              <div
+                class="skeleton skeleton-text skeleton-text--short"
+                style="height: 0.7em"
+              ></div>
+              <div
+                class="skeleton skeleton-text"
+                style="height: 1em; width: 75%"
+              ></div>
+              <div
+                class="skeleton skeleton-text skeleton-text--full"
+                style="height: 0.85em"
+              ></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── CTA ───────────────────────────────────────────────────────────── -->
+      <section class="section" style="padding-top: 0; padding-bottom: 100px">
+        <div class="container">
+          <div class="card" style="text-align: center; padding: 60px 40px">
+            <p
+              class="font-ui text-xs text-dim"
+              style="
+                letter-spacing: 0.1em;
+                text-transform: uppercase;
+                margin-bottom: 12px;
+              "
+            >
+              Start here
+            </p>
+            <h2
+              style="
+                font-size: clamp(1.5rem, 3vw, 2.2rem);
+                letter-spacing: -0.03em;
+                margin-bottom: 14px;
+              "
+            >
+              New to Odin?
+            </h2>
+            <p
+              class="text-muted font-ui"
+              style="
+                max-width: 440px;
+                margin: 0 auto 28px;
+                font-size: 0.95rem;
+                line-height: 1.7;
+              "
+            >
+              Follow the tutorial series from the beginning and write your first
+              Odin program in under 10 minutes.
+            </p>
+            <a href="./tutorials.html" class="btn btn--primary"
+              >Begin the Tutorial Series</a
+            >
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ── Footer ───────────────────────────────────────────────────────────── -->
+    <footer class="footer">
+      <div class="container footer__inner">
+        <p class="footer__copy">© 2026 Learn Odin. Free & open for everyone.</p>
+        <ul class="footer__links">
+          <li><a href="./blog.html">Blog</a></li>
+          <li><a href="./docs.html">Docs</a></li>
+          <li><a href="./tutorials.html">Tutorials</a></li>
+          <li><a href="./about.html">About</a></li>
+        </ul>
+      </div>
+    </footer>
+
+    <script src="./js/content.js" defer></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", async () => {
+        const container = document.getElementById("recent-posts");
+        try {
+          const posts = await window.LOContent.fetchList("blog");
+          const recent = posts.slice(0, 3);
+          if (recent.length === 0) {
+            container.innerHTML = `<div class="empty" style="grid-column:1/-1"><div class="empty__icon">✍</div><p class="empty__text">Posts coming soon.</p></div>`;
+            return;
+          }
+          container.innerHTML = recent
+            .map(
+              (p) => `
+          <a href="./post.html?type=blog&slug=${p.slug}" class="post-card">
+            <div class="post-card__meta">
+              ${
+                p.tags
+                  ? p.tags
+                      .split(",")
+                      .slice(0, 2)
+                      .map((t) => `<span class="tag">${t.trim()}</span>`)
+                      .join("")
+                  : ""
+              }
+              <span class="post-card__date">${window.LO.formatDate(p.date)}</span>
+            </div>
+            <h3 class="post-card__title">${p.title}</h3>
+            <p class="post-card__desc">${p.description}</p>
+            <div class="post-card__footer">
+              <span class="post-card__read">${p.readTime}</span>
+              <span class="post-card__arrow">${window.LO.iconArrow()}</span>
+            </div>
+          </a>
+        `,
+            )
+            .join("");
+        } catch {
+          container.innerHTML = `<p class="text-dim font-ui text-sm" style="grid-column:1/-1">Could not load posts.</p>`;
+        }
+      });
+    </script>
+  </body>
+</html>

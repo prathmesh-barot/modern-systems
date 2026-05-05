@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog — Learn Odin</title>
+    <meta
+      name="description"
+      content="Articles on Odin programming — language features, patterns, performance, and community insights."
+    />
+    <!-- Local Fonts -->
+    <link rel="stylesheet" href="/vendor/@fontsource/literata/index.css" />
+    <link rel="stylesheet" href="/vendor/@fontsource/space-grotesk/index.css" />
+    <link rel="stylesheet" href="/vendor/@fontsource/maple-mono/index.css" />
+    
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✦</text></svg>" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <script src="./js/main.js" defer></script>
+    
+    <!-- Local Fuse.js for Search -->
+    <script src="/vendor/fuse.js/dist/fuse.min.js" defer></script>
+  </head>
+  <body>
+    <!-- ── Nav ──────────────────────────────────────────────────────────────── -->
+    <nav class="nav" role="navigation" aria-label="Main navigation">
+      <div class="container nav__inner">
+        <a href="./" class="nav__logo">
+          <span class="nav__logo-mark">O</span>
+          Learn Odin
+        </a>
+        <ul class="nav__links">
+          <li><a href="./">Home</a></li>
+          <li><a href="./blog.html">Blog</a></li>
+          <li><a href="./docs.html">Docs</a></li>
+          <li><a href="./tutorials.html">Tutorials</a></li>
+          <li><a href="./about.html">About</a></li>
+        </ul>
+        <div class="nav__actions">
+          <button class="nav__theme" aria-label="Toggle theme"></button>
+          <button class="nav__burger" aria-label="Open menu">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </nav>
+    <div class="nav__mobile" role="dialog">
+      <a href="./">Home</a>
+      <a href="./blog.html">Blog</a>
+      <a href="./docs.html">Docs</a>
+      <a href="./tutorials.html">Tutorials</a>
+      <a href="./about.html">About</a>
+    </div>
+
+    <main class="page-offset">
+      <div class="container">
+        <!-- ── Page header ─────────────────────────────────────────────────── -->
+        <header class="page-header fade-up">
+          <p class="page-header__label">Writing</p>
+          <h1 class="page-header__title">Blog</h1>
+          <p class="page-header__desc">
+            In-depth articles on Odin programming — from language internals to
+            practical patterns and real-world applications.
+          </p>
+        </header>
+
+        <!-- ── Toolbar ────────────────────────────────────────────────────── -->
+        <div
+          class="flex items-center justify-between gap-4 mb-6 fade-up"
+          style="animation-delay: 100ms; flex-wrap: wrap"
+        >
+          <div class="search-bar" style="flex: 1; max-width: 380px">
+            <span class="search-bar__icon" aria-hidden="true">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                width="15"
+                height="15"
+              >
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+              </svg>
+            </span>
+            <input
+              class="input"
+              id="search"
+              type="search"
+              placeholder="Search articles…"
+              aria-label="Search articles"
+            />
+          </div>
+          <div class="flex gap-2" id="tag-filters" style="flex-wrap: wrap">
+            <button class="tag active-filter" data-tag="all">All</button>
+          </div>
+        </div>
+
+        <!-- ── Posts grid ─────────────────────────────────────────────────── -->
+        <div class="grid-3 stagger" id="posts-grid">
+          <!-- Loaded by JS -->
+        </div>
+
+        <!-- ── Empty state ────────────────────────────────────────────────── -->
+        <div id="empty-state" class="empty hidden">
+          <div class="empty__icon">🔍</div>
+          <p class="empty__text">No posts match your search.</p>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer__inner">
+        <p class="footer__copy">© 2026 Learn Odin. Free & open for everyone.</p>
+        <ul class="footer__links">
+          <li><a href="./">Home</a></li>
+          <li><a href="./docs.html">Docs</a></li>
+          <li><a href="./tutorials.html">Tutorials</a></li>
+        </ul>
+      </div>
+    </footer>
+
+    <script src="./js/content.js" defer></script>
+    <script>
+      let allPosts = [];
+      let activeTag = "all";
+      let fuse;
+
+      function renderPosts(posts) {
+        const grid = document.getElementById("posts-grid");
+        const empty = document.getElementById("empty-state");
+        if (posts.length === 0) {
+          grid.innerHTML = "";
+          empty.classList.remove("hidden");
+          return;
+        }
+        empty.classList.add("hidden");
+        grid.innerHTML = posts
+          .map(
+            (p) => `
+        <a href="./post.html?type=blog&slug=${p.slug}" class="post-card">
+          <div class="post-card__meta">
+            ${
+              p.tags
+                ? p.tags
+                    .split(",")
+                    .slice(0, 2)
+                    .map((t) => `<span class="tag">${t.trim()}</span>`)
+                    .join("")
+                : ""
+            }
+            <span class="post-card__date">${window.LO.formatDate(p.date)}</span>
+          </div>
+          <h2 class="post-card__title">${p.title}</h2>
+          <p class="post-card__desc">${p.description}</p>
+          <div class="post-card__footer">
+            <span class="post-card__read">${p.readTime}</span>
+            <span class="post-card__arrow">${window.LO.iconArrow()}</span>
+          </div>
+        </a>
+      `,
+          )
+          .join("");
+      }
+
+      function filterPosts(query, tag) {
+        let results = allPosts;
+
+        // Tag filtering
+        if (tag !== "all") {
+          results = results.filter(
+            (p) => p.tags && p.tags.toLowerCase().includes(tag),
+          );
+        }
+
+        // Fuzzy Search filtering
+        if (query) {
+          if (!fuse) {
+            // Initialize Fuse.js on first search
+            fuse = new Fuse(allPosts, {
+              keys: ["title", "description", "tags"],
+              threshold: 0.3, // Lower is more exact, 0.3 handles typos nicely
+            });
+          }
+          const fuzzyResults = fuse.search(query).map((result) => result.item);
+
+          // Intersect fuzzy search results with tag results
+          results = results.filter((p) => fuzzyResults.includes(p));
+        }
+
+        return results;
+      }
+
+      function buildTagFilters(posts) {
+        const tags = new Set();
+        posts.forEach((p) => {
+          if (p.tags) p.tags.split(",").forEach((t) => tags.add(t.trim()));
+        });
+        const bar = document.getElementById("tag-filters");
+        tags.forEach((tag) => {
+          const btn = document.createElement("button");
+          btn.className = "tag";
+          btn.dataset.tag = tag;
+          btn.textContent = tag;
+          btn.addEventListener("click", () => onTagClick(btn, tag));
+          bar.appendChild(btn);
+        });
+        bar
+          .querySelector('[data-tag="all"]')
+          .addEventListener("click", (e) => onTagClick(e.currentTarget, "all"));
+      }
+
+      function onTagClick(btn, tag) {
+        document
+          .querySelectorAll("#tag-filters .tag")
+          .forEach((b) => b.classList.remove("active-filter"));
+        btn.classList.add("active-filter");
+        activeTag = tag;
+        const q = document.getElementById("search").value;
+        renderPosts(filterPosts(q, tag));
+      }
+
+      document.addEventListener("DOMContentLoaded", async () => {
+        const grid = document.getElementById("posts-grid");
+        window.LOContent.showListSkeleton(grid, 6);
+
+        try {
+          allPosts = await window.LOContent.fetchList("blog");
+          buildTagFilters(allPosts);
+          renderPosts(allPosts);
+        } catch {
+          grid.innerHTML = `<p class="text-dim font-ui text-sm" style="grid-column:1/-1">Failed to load posts. Make sure the server is running.</p>`;
+        }
+
+        // Search
+        const input = document.getElementById("search");
+        input.addEventListener(
+          "input",
+          window.LO.debounce((e) => {
+            renderPosts(filterPosts(e.target.value, activeTag));
+          }, 200),
+        );
+      });
+    </script>
+
+    <style>
+      .active-filter {
+        background: var(--text);
+        color: var(--bg);
+        border-color: var(--text);
+      }
+      .active-filter:hover {
+        opacity: 0.85;
+      }
+    </style>
+  </body>
+</html>
